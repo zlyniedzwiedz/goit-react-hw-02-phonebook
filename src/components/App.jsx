@@ -1,16 +1,24 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      Phonebook HW-02
-    </div>
-  );
+import { Form } from "./Form/Form";
+import { Component } from "react";
+
+
+export class App extends Component {
+   state = {
+    contacts: [],
+    name: '',
+    number: ''
+  };
+  handleSubmit = evt => {
+    const {name} = evt.currentTarget;
+    this.setState(state => ({
+      [name]: ++state[name],
+    }))
+    console.log(this.state)
+  }
+  render() {
+   return (
+    <Form onDataSubmit={this.handleSubmit}/>
+   )
+    
+  }
 };
